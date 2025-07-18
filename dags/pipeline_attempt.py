@@ -44,10 +44,10 @@ with DAG(
                         continue
                     
                     items.append({
-                        'id': item.get('id'),  # Get ID from item attribute
+                        'id': item.get('id'),  
                         'title': anime_title_tag.text.strip(),
                         'score': float(item.find('bayesian_average').text),
-                        'nb_votes': int(item.find('nb_votes').text)  # Using nb_votes as rank proxy
+                        'nb_votes': int(item.find('nb_votes').text)  
                     })
                 except (ValueError, AttributeError, TypeError) as e:
                     print(f"Skipping malformed item: {e}")
@@ -68,15 +68,15 @@ with DAG(
             transformed_data = []
             skipped_count = 0
             
-            # Items are already in rank order, so we just number them sequentially
+            
             for rank, item in enumerate(anime_data.get('items', []), start=1):
                 try:
-                    # Validate ID exists and is not empty
+                    
                     if not item.get('id'):
                         skipped_count += 1
                         continue
                     
-                    # Convert and validate ID is a positive integer
+                    
                     item_id = int(item['id'])
                     if item_id <= 0:
                         print(f"Invalid ID {item_id} - must be positive")
@@ -88,7 +88,7 @@ with DAG(
                         'name': str(item.get('title', 'Unknown')).strip(),
                         'avg_score': max(0.0, min(10.0, float(item.get('score', 0.0)))),
                         'nb_votes': max(0, int(item.get('nb_votes', 0))),
-                        'rank': rank  # Add the sequential rank here
+                        'rank': rank  
                     })
                 except (ValueError, TypeError) as e:
                     print(f"Skipping malformed item: {str(e)}\nItem: {item}")
@@ -112,11 +112,11 @@ with DAG(
             conn = postgres_hook.get_conn()
             cursor = conn.cursor()
         
-            # 1. First drop the table if it exists (clean slate)
+            
             cursor.execute("DROP TABLE IF EXISTS top_anime;")
             conn.commit()
         
-            # 2. Create new table with all required columns (add rank column)
+            
             cursor.execute("""
                 CREATE TABLE top_anime (
                     id INTEGER PRIMARY KEY,
@@ -128,7 +128,7 @@ with DAG(
             """)
             conn.commit()
         
-            # 3. Prepare the data for insertion (now including rank)
+            
             if not transformed_data:
                 raise AirflowException("No data to load")
         
@@ -137,7 +137,7 @@ with DAG(
                 for r in transformed_data
             ]
         
-            # 4. Upsert the data (updated to include rank)
+            
             for record in records:
                 try:
                     cursor.execute("""
