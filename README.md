@@ -28,6 +28,7 @@ This project takes the top 50 Anime from animenews api and puts it into a easy t
 To make changes simply clone the repository and create a new branch, following this add what you need to the ETL code and give it a test run, if all of it works Great, push it up to your branch and create a merge request.
 
 Important URLS
+=======
 https://www.animenewsnetwork.com/encyclopedia/reports.xml?id=172
 https://www.animenewsnetwork.com/encyclopedia/reports.php?id=172
 
