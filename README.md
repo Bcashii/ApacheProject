@@ -29,6 +29,6 @@ To make changes simply clone the repository and create a new branch, following t
 
 Important URLS
 =======
-https://www.animenewsnetwork.com/encyclopedia/reports.xml?id=172
+https://www.animenewsnetwork.com/encyclopedia/reports.xml?id=172  
 https://www.animenewsnetwork.com/encyclopedia/reports.php?id=172
 
