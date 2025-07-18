@@ -1,45 +1,33 @@
-Overview
+Apache Airflow ETL Project
 ========
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+Welcome to my Etl project the main goal of this code is to exctract top anime data from an api, transform it into readable data and extract it to postgres as a readable database, this project should run automatically weekly to ensure constant up to date rankings.
 
-Project Contents
+Requirements to run 
 ================
+Python 
+Docker 
+Apache Airflow
+Astronomer
+DBeaver (optional to see database)
 
-Your Astro project contains the following files and folders:
-
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
-
-Deploy Your Project Locally
+How to Set Up and Run the Project 
 ===========================
+1. make sure you download docker desktop downloaded
+2. clone this repo onto your computer
+3. open the project in VSCode or similar
+4. In the terminal run the command (pip install "apache-airflow[celery]==3.02") and (winget install -e --id Astronomer Astro)
+5. in the terminal run (astro dev init) and then (astro dev start)
+6. open Docker and run the DAG this should now run weekly
+to see the project running go to http://localhost:8080
+if you have DBeaver installed you can then connect to the database in postgress and view the table that has been created 
 
-Start Airflow on your local machine by running 'astro dev start'.
-
-This command will spin up five Docker containers on your machine, each for a different Airflow component:
-
-- Postgres: Airflow's Metadata Database
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- DAG Processor: The Airflow component responsible for parsing DAGs
-- API Server: The Airflow component responsible for serving the Airflow UI and API
-- Triggerer: The Airflow component responsible for triggering deferred tasks
-
-When all five containers are ready the command will open the browser to the Airflow UI at http://localhost:8080/. You should also be able to access your Postgres Database at 'localhost:5432/postgres' with username 'postgres' and password 'postgres'.
-
-Note: If you already have either of the above ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
-
-Deploy Your Project to Astronomer
-=================================
-
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
-
-Contact
+Contribution Guidelines
 =======
+This project takes the top 50 Anime from animenews api and puts it into a easy to read database, to contribute to this project you can add columns from the api and fromat them how you would like this could be nice to see what other information we could give on the anime, each anime on the page has its own url which means you could go through those pages and find useful information to add, such as a brief description.
+To make changes simply clone the repository and create a new branch, following this add what you need to the ETL code and give it a test run, if all of it works Great, push it up to your branch and create a merge request.
 
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+Important URLS
+https://www.animenewsnetwork.com/encyclopedia/reports.xml?id=172
+https://www.animenewsnetwork.com/encyclopedia/reports.php?id=172
+
