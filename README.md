@@ -1,7 +1,7 @@
 Apache Airflow ETL Project
 ========
 
-Welcome to my Etl project the main goal of this code is to exctract top anime data from an api, transform it into readable data and extract it to postgres as a readable database, this project should run automatically weekly to ensure constant up to date rankings.
+Welcome to my Etl project the main goal of this code is to exctract top anime data from an api, transform it into readable data and extract it to postgres as a readable database, this project should run automatically weekly to ensure constant up to date rankings. you can find the Pipeline diagram in the repo it is called (etldiagram)
 
 Requirements to run 
 ================
