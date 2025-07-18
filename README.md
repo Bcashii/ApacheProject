@@ -5,11 +5,11 @@ Welcome to my Etl project the main goal of this code is to exctract top anime da
 
 Requirements to run 
 ================
-Python 
-Docker 
-Apache Airflow
-Astronomer
-DBeaver (optional to see database)
+Python  
+Docker  
+Apache Airflow  
+Astronomer  
+DBeaver (optional to see database)  
 
 How to Set Up and Run the Project 
 ===========================
